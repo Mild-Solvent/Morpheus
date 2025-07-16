@@ -156,17 +156,11 @@ function initStripe() {
   const stripeButton = document.getElementById("stripeButton");
   if (stripeButton) {
     stripeButton.addEventListener("click", () => {
-      // Replace with your actual Stripe Payment Link
-      // This is a placeholder - you'll need to create a payment link in your Stripe dashboard
-      const stripePaymentLink = "https://buy.stripe.com/your-payment-link-here";
-
-      // For demo purposes, show an alert
-      alert(
-        "Stripe integration ready! Replace the payment link in the code with your actual Stripe Payment Link."
-      );
-
-      // Uncomment this line when you have your actual payment link
-      // window.open(stripePaymentLink, '_blank');
+      // Your actual Stripe Payment Link
+      const stripePaymentLink = "https://buy.stripe.com/test_aFa9AV3wjapug5h3y25ZC01";
+      
+      // Open Stripe checkout in a new tab
+      window.open(stripePaymentLink, '_blank');
     });
   }
 }
