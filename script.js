@@ -151,25 +151,7 @@ class TerminalSimulator {
   }
 }
 
-// Stripe Integration
-function initStripe() {
-  const stripeButton = document.getElementById("stripeButton");
-  if (stripeButton) {
-    stripeButton.addEventListener("click", () => {
-      // Replace with your actual Stripe Payment Link
-      // This is a placeholder - you'll need to create a payment link in your Stripe dashboard
-      const stripePaymentLink = "https://buy.stripe.com/your-payment-link-here";
-
-      // For demo purposes, show an alert
-      alert(
-        "Stripe integration ready! Replace the payment link in the code with your actual Stripe Payment Link."
-      );
-
-      // Uncomment this line when you have your actual payment link
-      // window.open(stripePaymentLink, '_blank');
-    });
-  }
-}
+// Stripe Buy Button is now handled by the Stripe component directly
 
 // Button Click Particle Burst
 function createParticleBurst(x, y) {
@@ -260,7 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
   createMatrixRain();
   createFallingPills();
   new TerminalSimulator();
-  initStripe();
 
   // Add scroll animations
   const observerOptions = {

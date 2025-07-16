@@ -96,9 +96,24 @@ body {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo:hover .matrix-logo {
+    filter: url(#glow) drop-shadow(0 0 20px var(--matrix-green));
+}
+
+.logo:hover .logo-text {
+    text-shadow: 0 0 30px var(--matrix-green);
 }
 
 .logo-text {
@@ -115,35 +130,35 @@ body {
 }
 
 .nav-link {
-  color: var(--matrix-green);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+    color: var(--matrix-green);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
 }
 
-.nav-link::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--matrix-green);
-  transition: left 0.3s ease;
-  z-index: -1;
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--matrix-green);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover {
-  color: var(--bg-black);
-  border-color: var(--matrix-green);
-  text-shadow: none;
+    color: var(--matrix-green);
+    text-shadow: 0 0 15px var(--matrix-green);
+    transform: translateY(-2px);
 }
 
-.nav-link:hover::before {
-  left: 0;
+.nav-link:hover::after {
+    width: 80%;
 }
 
 .nav-link.active {
@@ -271,16 +286,25 @@ body {
 }
 
 .terminal-text {
-  font-size: 1.2rem;
-  margin: 2rem 0;
-  opacity: 0.8;
-  animation: typewriter 3s steps(30) forwards;
+    font-size: 1.2rem;
+    margin: 2rem 0;
+    opacity: 0.8;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--matrix-green);
+    animation: typewriter 3s steps(30) forwards, blink 0.5s step-end infinite alternate;
+    max-width: fit-content;
 }
 
 @keyframes typewriter {
-  from {
-    width: 0;
-  }
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from { border-color: transparent; }
+    to { border-color: var(--matrix-green); }
+}
   to {
     width: 100%;
   }
