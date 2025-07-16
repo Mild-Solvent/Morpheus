@@ -325,3 +325,75 @@ function createMobileMenu() {
 }
 
 createMobileMenu();
+
+// Cookies Popup Management
+class CookiesPopup {
+  constructor() {
+    this.popup = document.getElementById('cookies-popup');
+    this.acceptButton = document.getElementById('accept-cookies');
+    this.learnMoreButton = document.getElementById('learn-more');
+    this.cookieKey = 'morpheus_cookies_accepted';
+    
+    this.init();
+  }
+
+  init() {
+    // Check if user has already accepted cookies
+    if (!this.hasAcceptedCookies()) {
+      this.showPopup();
+    }
+
+    // Add event listeners
+    if (this.acceptButton) {
+      this.acceptButton.addEventListener('click', () => this.acceptCookies());
+    }
+
+    if (this.learnMoreButton) {
+      this.learnMoreButton.addEventListener('click', () => this.showMoreInfo());
+    }
+  }
+
+  hasAcceptedCookies() {
+    return localStorage.getItem(this.cookieKey) === 'true';
+  }
+
+  showPopup() {
+    if (this.popup) {
+      // Add a slight delay to ensure smooth animation
+      setTimeout(() => {
+        this.popup.classList.add('show');
+      }, 1000);
+    }
+  }
+
+  hidePopup() {
+    if (this.popup) {
+      this.popup.classList.remove('show');
+      // Remove from DOM after animation completes
+      setTimeout(() => {
+        this.popup.style.display = 'none';
+      }, 500);
+    }
+  }
+
+  acceptCookies() {
+    localStorage.setItem(this.cookieKey, 'true');
+    this.hidePopup();
+    
+    // Create a particle burst effect when accepting
+    const rect = this.acceptButton.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    createParticleBurst(x, y);
+  }
+
+  showMoreInfo() {
+    // Open privacy policy in the same tab
+    window.location.href = 'privacy.html';
+  }
+}
+
+// Initialize cookies popup when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new CookiesPopup();
+});

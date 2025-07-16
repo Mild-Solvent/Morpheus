@@ -914,6 +914,190 @@ body {
   left: 0;
 }
 
+/* Cookies Popup Styles */
+.cookies-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid var(--matrix-green);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+  max-width: 400px;
+  width: 90%;
+  padding: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.5s ease;
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cookies-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cookies-content {
+  padding: 1.5rem;
+  position: relative;
+}
+
+.cookies-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--matrix-green);
+}
+
+.cookies-title {
+  color: var(--matrix-green);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 0 10px var(--matrix-green);
+}
+
+.cookies-icon {
+  font-size: 1.5rem;
+  filter: grayscale(100%) hue-rotate(90deg);
+  animation: pulse 2s infinite;
+}
+
+.cookies-text {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.cookies-text p {
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  color: rgba(0, 255, 0, 0.9);
+}
+
+.cookies-text p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight-green {
+  color: var(--matrix-green);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.highlight-blue {
+  color: var(--matrix-blue);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--matrix-blue);
+}
+
+.highlight-red {
+  color: var(--matrix-red);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--matrix-red);
+}
+
+.cookies-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.matrix-button {
+  background: transparent;
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-width: 120px;
+  font-family: inherit;
+}
+
+.matrix-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--matrix-green);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.matrix-button:hover {
+  color: var(--bg-black);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.matrix-button:hover::before {
+  left: 0;
+}
+
+.matrix-button.primary {
+  border-color: var(--matrix-green);
+  color: var(--matrix-green);
+}
+
+.matrix-button.primary::before {
+  background: var(--matrix-green);
+}
+
+.matrix-button.secondary {
+  border-color: var(--matrix-blue);
+  color: var(--matrix-blue);
+}
+
+.matrix-button.secondary::before {
+  background: var(--matrix-blue);
+}
+
+.matrix-button.secondary:hover {
+  color: var(--bg-black);
+  box-shadow: 0 0 15px rgba(0, 128, 255, 0.5);
+}
+
+/* Responsive design for cookies popup */
+@media (max-width: 768px) {
+  .cookies-popup {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    width: auto;
+  }
+  
+  .cookies-buttons {
+    flex-direction: column;
+  }
+  
+  .matrix-button {
+    min-width: auto;
+  }
+}
+
+/* Animation for the cookie icon */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
 /* Privacy and Terms Page Styles */
 .content-section {
   padding: 8rem 2rem 6rem;
