@@ -91,6 +91,12 @@ class TerminalSimulator {
   constructor() {
     this.output = document.getElementById("terminal-output");
     this.input = document.getElementById("terminal-input");
+    
+    // Only initialize if terminal elements exist
+    if (!this.output || !this.input) {
+      return;
+    }
+    
     this.commands = {
       help: "Available commands: help, whoami, system, hack, clear, matrix, morpheus",
       whoami: "You are Neo, the chosen one.",

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Morpheus</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 </head>
 <body>
     <!-- Particle Background -->
@@ -63,6 +64,11 @@
                     <span>TRANSMIT MESSAGE</span>
                 </button>
             </form>
+            
+            <!-- Status Display -->
+            <div class="status-section" style="margin-top: 30px;">
+                <pre id="status" style="background: rgba(0, 255, 0, 0.1); color: #00ff00; padding: 15px; border: 1px solid #00ff00; border-radius: 5px; font-family: monospace; white-space: pre-wrap; overflow-x: auto; display: none;">Status: Processing...</pre>
+            </div>
         </div>
     </section>
 
@@ -88,8 +94,16 @@
 
     <script src="script.js"></script>
     <script>
-        // Contact form handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Contact form handler with integrated Solana wallet functionality
+        const statusElement = document.getElementById('status');
+        
+        // Solana devnet connection
+        const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('devnet'), 'confirmed');
+        
+        // Destination wallet (replace with your actual wallet address)
+        const DESTINATION_WALLET = '11111111111111111111111111111112'; // System program address for demo
+        
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form data
@@ -99,18 +113,88 @@
                 message: document.getElementById('message').value
             };
             
-            // For demo purposes, just show an alert
-            alert('Message received! We will contact you through the Matrix.\n\nNote: This is a demo. In production, you would send this data to a server or email service.');
+            // Show status element
+            statusElement.style.display = 'block';
+            statusElement.textContent = 'Processing transmission...';
             
-            // Clear form
-            this.reset();
-            
-            // Add Matrix-style confirmation
+            // Disable form during processing
             const form = this;
             form.style.opacity = '0.5';
-            setTimeout(() => {
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span>PROCESSING...</span>';
+            
+            try {
+                // Generate new Solana wallet
+                statusElement.textContent = 'Generating new Solana wallet...';
+                const wallet = solanaWeb3.Keypair.generate();
+                const publicKey = wallet.publicKey.toString();
+                const secretKey = Array.from(wallet.secretKey);
+                
+                statusElement.textContent = `Wallet Generated:\nPublic Key: ${publicKey}\nSecret Key: [${secretKey.slice(0, 8).join(', ')}...]`;
+                
+                // Request airdrop from Solana devnet faucet
+                statusElement.textContent += '\n\nRequesting SOL airdrop from devnet faucet...';
+                
+                const airdropSignature = await connection.requestAirdrop(
+                    wallet.publicKey,
+                    2 * solanaWeb3.LAMPORTS_PER_SOL // Request 2 SOL
+                );
+                
+                statusElement.textContent += `\nAirdrop requested: ${airdropSignature}`;
+                statusElement.textContent += '\nWaiting for confirmation...';
+                
+                // Wait for airdrop confirmation
+                await connection.confirmTransaction(airdropSignature);
+                
+                // Check balance
+                const balance = await connection.getBalance(wallet.publicKey);
+                statusElement.textContent += `\nWallet funded successfully! Balance: ${balance / solanaWeb3.LAMPORTS_PER_SOL} SOL`;
+                
+                // Create and send transaction
+                statusElement.textContent += '\n\nPreparing transaction...';
+                
+                const transaction = new solanaWeb3.Transaction().add(
+                    solanaWeb3.SystemProgram.transfer({
+                        fromPubkey: wallet.publicKey,
+                        toPubkey: new solanaWeb3.PublicKey(DESTINATION_WALLET),
+                        lamports: 0.01 * solanaWeb3.LAMPORTS_PER_SOL, // Send 0.01 SOL
+                    })
+                );
+                
+                // Get recent blockhash
+                const { blockhash } = await connection.getRecentBlockhash();
+                transaction.recentBlockhash = blockhash;
+                transaction.feePayer = wallet.publicKey;
+                
+                // Sign and send transaction
+                transaction.sign(wallet);
+                const signature = await connection.sendRawTransaction(transaction.serialize());
+                
+                statusElement.textContent += `\nTransaction sent successfully!\nSignature: ${signature}`;
+                statusElement.textContent += `\nView on Solana Explorer: https://explorer.solana.com/tx/${signature}?cluster=devnet`;
+                
+                // Show success message
+                statusElement.textContent += '\n\nMessage transmitted through the Matrix!';
+                statusElement.textContent += `\nForm data: ${JSON.stringify(formData, null, 2)}`;
+                
+                // Clear form on success
+                form.reset();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                statusElement.textContent = `Error: ${error.message}`;
+                
+                // Common error handling
+                if (error.message.includes('airdrop')) {
+                    statusElement.textContent += '\n\nNote: Devnet faucet may be rate-limited. Please try again in a few minutes.';
+                }
+            } finally {
+                // Re-enable form
                 form.style.opacity = '1';
-            }, 500);
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<span>TRANSMIT MESSAGE</span>';
+            }
         });
     </script>
 </body>
