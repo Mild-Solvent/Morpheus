@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Morpheus</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles"></div>
+    
+    <!-- Scanline Effect -->
+    <div class="scanlines"></div>
+    
+    <!-- Header -->
+    <header class="matrix-header">
+        <nav class="main-nav">
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 100 100" class="matrix-logo">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <text x="50" y="60" text-anchor="middle" font-size="40" fill="#00ff00" filter="url(#glow)" font-family="monospace">M</text>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00ff00" stroke-width="2" filter="url(#glow)" opacity="0.7"/>
+                </svg>
+                <span class="logo-text">MORPHEUS</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="index.html#docs" class="nav-link">Docs</a></li>
+                <li><a href="terms.html" class="nav-link">Terms</a></li>
+                <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h1 class="section-title glitch" data-text="CONTACT THE OPERATOR">CONTACT THE OPERATOR</h1>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">IDENTIFICATION</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your alias">
+                </div>
+                <div class="form-group">
+                    <label for="email">DIGITAL SIGNATURE</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@matrix.net">
+                </div>
+                <div class="form-group">
+                    <label for="message">TRANSMISSION</label>
+                    <textarea id="message" name="message" required placeholder="Compose your message..."></textarea>
+                </div>
+                <button type="submit" class="submit-button">
+                    <span>TRANSMIT MESSAGE</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="matrix-footer">
+        <div class="footer-content">
+            <div class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html#docs">Docs</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+            <div class="footer-logo">
+                <svg width="30" height="30" viewBox="0 0 100 100" class="matrix-logo">
+                    <text x="50" y="60" text-anchor="middle" font-size="40" fill="#00ff00" filter="url(#glow)" font-family="monospace">M</text>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00ff00" stroke-width="2" filter="url(#glow)" opacity="0.7"/>
+                </svg>
+            </div>
+            <p class="copyright">&copy; 2024 Morpheus. The Matrix has you.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Contact form handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            
+            // For demo purposes, just show an alert
+            alert('Message received! We will contact you through the Matrix.\n\nNote: This is a demo. In production, you would send this data to a server or email service.');
+            
+            // Clear form
+            this.reset();
+            
+            // Add Matrix-style confirmation
+            const form = this;
+            form.style.opacity = '0.5';
+            setTimeout(() => {
+                form.style.opacity = '1';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morpheus - Enter the Matrix</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Particle Background -->
+    <div id="particles"></div>
+
+    <!-- Scanline Effect -->
+    <div class="scanlines"></div>
+
+    <!-- Header -->
+    <header class="matrix-header">
+      <nav class="main-nav">
+        <div class="logo">
+          <svg width="50" height="50" viewBox="0 0 100 100" class="matrix-logo">
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <text
+              x="50"
+              y="60"
+              text-anchor="middle"
+              font-size="40"
+              fill="#00ff00"
+              filter="url(#glow)"
+              font-family="monospace"
+            >
+              M
+            </text>
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="none"
+              stroke="#00ff00"
+              stroke-width="2"
+              filter="url(#glow)"
+              opacity="0.7"
+            />
+          </svg>
+          <span class="logo-text">MORPHEUS</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="#docs" class="nav-link">Docs</a></li>
+          <li><a href="terms.html" class="nav-link">Terms</a></li>
+          <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Section 1: Product Showcase -->
+    <section class="product-showcase">
+      <div class="matrix-rain"></div>
+      <div class="showcase-content">
+        <img
+          src="./images/morpheus-device.png"
+          alt="Morpheus Device"
+          class="product-image"
+        />
+        <div class="showcase-text">
+          <h1 class="glitch" data-text="MORPHEUS">MORPHEUS</h1>
+          <p class="terminal-text">Wake up, Neo... The Matrix has you.</p>
+          <button class="buy-button" id="stripeButton">
+            <span class="button-text">PREORDER NOW</span>
+            <div class="button-glow"></div>
+          </button>
+        </div>
+      </div>
+      <svg
+        class="section-divider"
+        viewBox="0 0 1440 100"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,50 C360,100 1080,0 1440,50 L1440,100 L0,100 Z"
+          fill="#000000"
+          stroke="#00ff00"
+          stroke-width="2"
+        />
+      </svg>
+    </section>
+
+    <!-- Section 2: Pill Choice -->
+    <section class="pill-choice">
+      <div class="pill-container">
+        <div class="pill-hand left">
+          <img
+            src="./images/red-pill-hand.png"
+            alt="Red Pill"
+            class="pill-image"
+          />
+        </div>
+        <div class="choice-text">
+          <h2 class="matrix-text">
+            Will you take the <span class="red-text">red pill</span> or the
+            <span class="blue-text">blue pill</span>?
+          </h2>
+          <p class="subtext">
+            The choice is yours, but remember... all I'm offering is the truth.
+          </p>
+        </div>
+        <div class="pill-hand right">
+          <img
+            src="./images/blue-pill-hand.png"
+            alt="Blue Pill"
+            class="pill-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Features -->
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title glitch" data-text="SYSTEM SPECIFICATIONS">
+          SYSTEM SPECIFICATIONS
+        </h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Linux Core</h3>
+            <p>
+              Built on a robust Linux foundation, giving you complete control
+              over the system matrix.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Fully Scriptable</h3>
+            <p>
+              Run your own scripts, install custom tools, and bend reality to
+              your will.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Preloaded Arsenal</h3>
+            <p>
+              Comes with essential tools preinstalled. Ready to jack in from day
+              one.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Infinite Possibilities</h3>
+            <p>
+              Make it do whatever you want. The only limit is your imagination.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Documentation -->
+    <section class="documentation" id="docs">
+      <div class="falling-pills"></div>
+      <div class="docs-content">
+        <h2 class="section-title">ACCESS THE CONSTRUCT</h2>
+        <p class="docs-description">
+          Dive deep into the documentation. Learn the APIs, understand the
+          system, master the code.
+        </p>
+        <a href="#" class="docs-button">
+          <span>GO TO DOCS</span>
+          <div class="button-matrix-bg"></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 5: Terminal Simulator -->
+    <section class="terminal-section">
+      <div class="container">
+        <h2 class="section-title">SYSTEM ACCESS TERMINAL</h2>
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="terminal-title">morpheus@matrix:~$</span>
+            <div class="terminal-controls">
+              <span class="control minimize"></span>
+              <span class="control maximize"></span>
+              <span class="control close"></span>
+            </div>
+          </div>
+          <div class="terminal-body">
+            <div id="terminal-output"></div>
+            <div class="terminal-input-line">
+              <span class="prompt">morpheus@matrix:~$ </span>
+              <input
+                type="text"
+                id="terminal-input"
+                class="terminal-input"
+                placeholder="type 'help' for commands"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="matrix-footer">
+      <div class="footer-content">
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="#docs">Docs</a>
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
+        </div>
+        <div class="footer-logo">
+          <svg width="30" height="30" viewBox="0 0 100 100" class="matrix-logo">
+            <text
+              x="50"
+              y="60"
+              text-anchor="middle"
+              font-size="40"
+              fill="#00ff00"
+              filter="url(#glow)"
+              font-family="monospace"
+            >
+              M
+            </text>
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="none"
+              stroke="#00ff00"
+              stroke-width="2"
+              filter="url(#glow)"
+              opacity="0.7"
+            />
+          </svg>
+        </div>
+        <p class="copyright">&copy; 2024 Morpheus. The Matrix has you.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

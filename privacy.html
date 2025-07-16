@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Morpheus</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles"></div>
+    
+    <!-- Scanline Effect -->
+    <div class="scanlines"></div>
+    
+    <!-- Header -->
+    <header class="matrix-header">
+        <nav class="main-nav">
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 100 100" class="matrix-logo">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <text x="50" y="60" text-anchor="middle" font-size="40" fill="#00ff00" filter="url(#glow)" font-family="monospace">M</text>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00ff00" stroke-width="2" filter="url(#glow)" opacity="0.7"/>
+                </svg>
+                <span class="logo-text">MORPHEUS</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="index.html#docs" class="nav-link">Docs</a></li>
+                <li><a href="terms.html" class="nav-link">Terms</a></li>
+                <li><a href="privacy.html" class="nav-link active">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Privacy Content -->
+    <section class="content-section">
+        <div class="content-container">
+            <h1 class="glitch" data-text="PRIVACY PROTOCOL">PRIVACY PROTOCOL</h1>
+            
+            <h2>DATA COLLECTION</h2>
+            <p>We don't use cookies. Your mind is already free from tracking in this digital realm.</p>
+            <p>This site is hosted on GitHub Pages, a static hosting service that does not collect personal information beyond standard server logs.</p>
+            
+            <h2>PAYMENT PROCESSING</h2>
+            <p>When you choose to purchase through our Stripe integration, you will be redirected to Stripe's secure payment platform. Stripe may handle payment information according to their own privacy policies. We never see or store your payment details.</p>
+            
+            <h2>YOUR DIGITAL FOOTPRINT</h2>
+            <ul>
+                <li>No tracking pixels</li>
+                <li>No analytics scripts</li>
+                <li>No third-party cookies</li>
+                <li>No surveillance in the Matrix</li>
+            </ul>
+            
+            <h2>GITHUB PAGES</h2>
+            <p>This site runs on GitHub Pages, which may collect basic technical information such as:</p>
+            <ul>
+                <li>IP addresses</li>
+                <li>Browser types</li>
+                <li>Referring pages</li>
+                <li>Date and time of visits</li>
+            </ul>
+            <p>This data is controlled by GitHub, not by us. Please refer to GitHub's privacy policy for more information.</p>
+            
+            <h2>CONTACT INFORMATION</h2>
+            <p>If you submit information through our contact form, it exists only in the digital void until we manually retrieve it. We do not store this information in any database.</p>
+            
+            <h2>YOUR RIGHTS</h2>
+            <p>In this reality, you have the right to:</p>
+            <ul>
+                <li>Browse anonymously</li>
+                <li>Reject the illusion of tracking</li>
+                <li>Choose your own path through the site</li>
+                <li>Leave no trace, like a ghost in the machine</li>
+            </ul>
+            
+            <h2>CHANGES TO THIS POLICY</h2>
+            <p>Should we ever alter this privacy protocol, the changes will be reflected here. The Matrix may evolve, but your privacy remains paramount.</p>
+            
+            <p style="margin-top: 3rem; text-align: center; opacity: 0.7;">
+                Remember: There is no spoon... and there are no cookies.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="matrix-footer">
+        <div class="footer-content">
+            <div class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html#docs">Docs</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+            <div class="footer-logo">
+                <svg width="30" height="30" viewBox="0 0 100 100" class="matrix-logo">
+                    <text x="50" y="60" text-anchor="middle" font-size="40" fill="#00ff00" filter="url(#glow)" font-family="monospace">M</text>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00ff00" stroke-width="2" filter="url(#glow)" opacity="0.7"/>
+                </svg>
+            </div>
+            <p class="copyright">&copy; 2024 Morpheus. The Matrix has you.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
