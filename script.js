@@ -151,7 +151,19 @@ class TerminalSimulator {
   }
 }
 
-// Stripe Buy Button is now handled by the Stripe component directly
+// Stripe Integration
+function initStripe() {
+  const stripeButton = document.getElementById("stripeButton");
+  if (stripeButton) {
+    stripeButton.addEventListener("click", () => {
+      // Your actual Stripe Payment Link
+      const stripePaymentLink = "https://buy.stripe.com/test_aFa9AV3wjapug5h3y25ZC01";
+      
+      // Open Stripe checkout in a new tab
+      window.open(stripePaymentLink, '_blank');
+    });
+  }
+}
 
 // Button Click Particle Burst
 function createParticleBurst(x, y) {
@@ -242,6 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createMatrixRain();
   createFallingPills();
   new TerminalSimulator();
+  initStripe();
 
   // Add scroll animations
   const observerOptions = {

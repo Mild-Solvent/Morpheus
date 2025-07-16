@@ -93,27 +93,16 @@ body {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.05);
-}
-
-.logo:hover .matrix-logo {
-    filter: url(#glow) drop-shadow(0 0 20px var(--matrix-green));
-}
-
-.logo:hover .logo-text {
-    text-shadow: 0 0 30px var(--matrix-green);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: var(--matrix-green);
 }
 
 .logo-text {
@@ -127,43 +116,41 @@ body {
   display: flex;
   list-style: none;
   gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .nav-link {
-    color: var(--matrix-green);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--matrix-green);
-    transform: translateX(-50%);
-    transition: width 0.3s ease;
+  color: var(--matrix-green);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-link:hover {
-    color: var(--matrix-green);
-    text-shadow: 0 0 15px var(--matrix-green);
-    transform: translateY(-2px);
-}
-
-.nav-link:hover::after {
-    width: 80%;
+  color: var(--bg-black);
+  border-color: var(--matrix-green);
+  background: var(--matrix-green);
+  text-shadow: none;
 }
 
 .nav-link.active {
   border-color: var(--matrix-green);
   box-shadow: 0 0 15px var(--matrix-green);
+}
+
+/* Special styling for Buy Now button */
+.nav-link.stripe-link {
+  background: rgba(0, 255, 0, 0.1);
+  border-color: var(--matrix-green);
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.nav-link.stripe-link:hover {
+  box-shadow: 0 0 20px var(--matrix-green);
 }
 
 /* Product Showcase */
@@ -286,27 +273,33 @@ body {
 }
 
 .terminal-text {
-    font-size: 1.2rem;
-    margin: 2rem 0;
-    opacity: 0.8;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid var(--matrix-green);
-    animation: typewriter 3s steps(30) forwards, blink 0.5s step-end infinite alternate;
-    max-width: fit-content;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--matrix-green);
+  animation: typewriter 3s steps(30) 1s forwards, blink 0.5s step-end infinite alternate 3.5s;
+  max-width: fit-content;
 }
 
 @keyframes typewriter {
-    from { width: 0; }
-    to { width: 100%; }
+  0% {
+    width: 0;
+    opacity: 0.8;
+  }
+  1% {
+    opacity: 0.8;
+  }
+  100% {
+    width: 100%;
+    opacity: 0.8;
+  }
 }
 
 @keyframes blink {
-    from { border-color: transparent; }
-    to { border-color: var(--matrix-green); }
-}
-  to {
-    width: 100%;
+  50% {
+    border-color: transparent;
   }
 }
 
