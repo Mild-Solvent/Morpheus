@@ -74,13 +74,10 @@
         <div class="showcase-text">
           <h1 class="glitch" data-text="MORPHEUS">MORPHEUS</h1>
           <p class="terminal-text">Wake up, Neo... The Matrix has you.</p>
-          <div id="stripe-button-container">
-            <stripe-buy-button
-              buy-button-id="buy_btn_1RlcqdPp3bfoIjr4XtM476Wo"
-              publishable-key="pk_test_51Rf06aPp3bfoIjr4rpzup85XkX9SwSUPDQRTLEe38Lhx90Dj8V23qEeGgwkZUMT2NiJQGGsHbmVWF07QGEDqEnnw00vbQJ8JgM"
-            >
-            </stripe-buy-button>
-          </div>
+          <button class="buy-button" id="stripeButton">
+            <span class="button-text">PREORDER NOW</span>
+            <div class="button-glow"></div>
+          </button>
         </div>
       </div>
       <svg
@@ -248,7 +245,6 @@
       </div>
     </footer>
 
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
