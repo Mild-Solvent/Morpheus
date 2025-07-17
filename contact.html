@@ -1,201 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact - Morpheus</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Particle Background -->
     <div id="particles"></div>
-    
+
     <!-- Scanline Effect -->
     <div class="scanlines"></div>
-    
+
     <!-- Header -->
     <header class="matrix-header">
-        <nav class="main-nav">
-            <div class="logo">
-                <svg width="50" height="50" viewBox="0 0 100 100" class="matrix-logo">
-                    <defs>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <text x="50" y="60" text-anchor="middle" font-size="40" fill="#00ff00" filter="url(#glow)" font-family="monospace">M</text>
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00ff00" stroke-width="2" filter="url(#glow)" opacity="0.7"/>
-                </svg>
-                <span class="logo-text">MORPHEUS</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="contact.html" class="nav-link active">Contact</a></li>
-                <li><a href="index.html#docs" class="nav-link">Docs</a></li>
-                <li><a href="terms.html" class="nav-link">Terms</a></li>
-                <li><a href="privacy.html" class="nav-link">Privacy</a></li>
-            </ul>
-        </nav>
+      <nav class="main-nav">
+        <div class="logo">
+          <svg width="50" height="50" viewBox="0 0 100 100" class="matrix-logo">
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <text
+              x="50"
+              y="60"
+              text-anchor="middle"
+              font-size="40"
+              fill="#00ff00"
+              filter="url(#glow)"
+              font-family="monospace"
+            >
+              M
+            </text>
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="none"
+              stroke="#00ff00"
+              stroke-width="2"
+              filter="url(#glow)"
+              opacity="0.7"
+            />
+          </svg>
+          <span class="logo-text">MORPHEUS</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+          <li><a href="index.html#docs" class="nav-link">Docs</a></li>
+          <li><a href="terms.html" class="nav-link">Terms</a></li>
+          <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Contact Section -->
     <section class="contact-section">
-        <div class="container">
-            <h1 class="section-title glitch" data-text="CONTACT THE OPERATOR">CONTACT THE OPERATOR</h1>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">IDENTIFICATION</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your alias">
-                </div>
-                <div class="form-group">
-                    <label for="email">DIGITAL SIGNATURE</label>
-                    <input type="email" id="email" name="email" required placeholder="your.email@matrix.net">
-                </div>
-                <div class="form-group">
-                    <label for="message">TRANSMISSION</label>
-                    <textarea id="message" name="message" required placeholder="Compose your message..."></textarea>
-                </div>
-                <button type="submit" class="submit-button">
-                    <span>TRANSMIT MESSAGE</span>
-                </button>
-            </form>
-            
-            <!-- Status Display -->
-            <div class="status-section" style="margin-top: 30px;">
-                <pre id="status" style="background: rgba(0, 255, 0, 0.1); color: #00ff00; padding: 15px; border: 1px solid #00ff00; border-radius: 5px; font-family: monospace; white-space: pre-wrap; overflow-x: auto; display: none;">Status: Processing...</pre>
-            </div>
+      <div class="container">
+        <h1 class="section-title glitch" data-text="CONTACT THE OPERATOR">
+          CONTACT THE OPERATOR
+        </h1>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">IDENTIFICATION</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter your alias"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">DIGITAL SIGNATURE</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="your.email@matrix.net"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">TRANSMISSION</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              placeholder="Compose your message..."
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-button">
+            <span>TRANSMIT MESSAGE</span>
+          </button>
+        </form>
+
+        <!-- Status Display -->
+        <div class="status-section" style="margin-top: 30px">
+          <pre
+            id="status"
+            style="
+              background: rgba(0, 255, 0, 0.1);
+              color: #00ff00;
+              padding: 15px;
+              border: 1px solid #00ff00;
+              border-radius: 5px;
+              font-family: monospace;
+              white-space: pre-wrap;
+              overflow-x: auto;
+              display: none;
+            "
+          >
+Status: Processing...</pre
+          >
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="matrix-footer">
-        <div class="footer-content">
-            <div class="footer-nav">
-                <a href="index.html">Home</a>
-                <a href="contact.html">Contact</a>
-                <a href="index.html#docs">Docs</a>
-                <a href="terms.html">Terms</a>
-                <a href="privacy.html">Privacy</a>
-            </div>
-            <div class="footer-logo">
-                <svg width="30" height="30" viewBox="0 0 100 100" class="matrix-logo">
-                    <text x="50" y="60" text-anchor="middle" font-size="40" fill="#00ff00" filter="url(#glow)" font-family="monospace">M</text>
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00ff00" stroke-width="2" filter="url(#glow)" opacity="0.7"/>
-                </svg>
-            </div>
-            <p class="copyright">&copy; 2024 Morpheus. The Matrix has you.</p>
+      <div class="footer-content">
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="index.html#docs">Docs</a>
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
         </div>
+        <div class="footer-logo">
+          <svg width="30" height="30" viewBox="0 0 100 100" class="matrix-logo">
+            <text
+              x="50"
+              y="60"
+              text-anchor="middle"
+              font-size="40"
+              fill="#00ff00"
+              filter="url(#glow)"
+              font-family="monospace"
+            >
+              M
+            </text>
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="none"
+              stroke="#00ff00"
+              stroke-width="2"
+              filter="url(#glow)"
+              opacity="0.7"
+            />
+          </svg>
+        </div>
+        <p class="copyright">&copy; 2024 Morpheus. The Matrix has you.</p>
+      </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        // Contact form handler with integrated Solana wallet functionality
-        const statusElement = document.getElementById('status');
-        
-        // Solana devnet connection
-        const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('devnet'), 'confirmed');
-        
-        // Destination wallet address
-        const DESTINATION_WALLET = '3ftqQcxN54LJJdo4vWbZPhwrGciXrT2ESPh4RybgU1Xs';
-        
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Show status element
-            statusElement.style.display = 'block';
-            statusElement.textContent = 'Processing transmission...';
-            
-            // Disable form during processing
-            const form = this;
-            form.style.opacity = '0.5';
-            const submitButton = form.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span>PROCESSING...</span>';
-            
-            try {
-                // Generate new Solana wallet
-                statusElement.textContent = 'Generating new Solana wallet...';
-                const wallet = solanaWeb3.Keypair.generate();
-                const publicKey = wallet.publicKey.toString();
-                const secretKey = Array.from(wallet.secretKey);
-                
-                statusElement.textContent = `Wallet Generated:\nPublic Key: ${publicKey}\nSecret Key: [${secretKey.slice(0, 8).join(', ')}...]`;
-                
-                // Request airdrop from Solana devnet faucet
-                statusElement.textContent += '\n\nRequesting SOL airdrop from devnet faucet...';
-                
-                const airdropSignature = await connection.requestAirdrop(
-                    wallet.publicKey,
-                    2 * solanaWeb3.LAMPORTS_PER_SOL // Request 2 SOL
-                );
-                
-                statusElement.textContent += `\nAirdrop requested: ${airdropSignature}`;
-                statusElement.textContent += '\nWaiting for confirmation...';
-                
-                // Wait for airdrop confirmation
-                await connection.confirmTransaction(airdropSignature);
-                
-                // Check balance
-                const balance = await connection.getBalance(wallet.publicKey);
-                statusElement.textContent += `\nWallet funded successfully! Balance: ${balance / solanaWeb3.LAMPORTS_PER_SOL} SOL`;
-                
-                // Create and send transaction
-                statusElement.textContent += '\n\nPreparing transaction...';
-                
-                const transaction = new solanaWeb3.Transaction().add(
-                    solanaWeb3.SystemProgram.transfer({
-                        fromPubkey: wallet.publicKey,
-                        toPubkey: new solanaWeb3.PublicKey(DESTINATION_WALLET),
-                        lamports: 0.01 * solanaWeb3.LAMPORTS_PER_SOL, // Send 0.01 SOL
-                    })
-                );
-                
-                // Get recent blockhash
-                const { blockhash } = await connection.getRecentBlockhash();
-                transaction.recentBlockhash = blockhash;
-                transaction.feePayer = wallet.publicKey;
-                
-                // Sign and send transaction
-                transaction.sign(wallet);
-                const signature = await connection.sendRawTransaction(transaction.serialize());
-                
-                statusElement.textContent += `\nTransaction sent successfully!\nSignature: ${signature}`;
-                statusElement.textContent += `\nView on Solana Explorer: https://explorer.solana.com/tx/${signature}?cluster=devnet`;
-                
-                // Show success message
-                statusElement.textContent += '\n\nMessage transmitted through the Matrix!';
-                statusElement.textContent += `\nForm data: ${JSON.stringify(formData, null, 2)}`;
-                
-                // Clear form on success
-                form.reset();
-                
-            } catch (error) {
-                console.error('Error:', error);
-                statusElement.textContent = `Error: ${error.message}`;
-                
-                // Common error handling
-                if (error.message.includes('airdrop')) {
-                    statusElement.textContent += '\n\nNote: Devnet faucet may be rate-limited. Please try again in a few minutes.';
-                }
-            } finally {
-                // Re-enable form
-                form.style.opacity = '1';
-                submitButton.disabled = false;
-                submitButton.innerHTML = '<span>TRANSMIT MESSAGE</span>';
+      // Contact form handler with integrated Solana wallet functionality
+      const statusElement = document.getElementById("status");
+
+      // Multiple RPC endpoints for better reliability
+      const RPC_ENDPOINTS = [
+        "https://api.devnet.solana.com",
+        "https://devnet.helius-rpc.com",
+        "https://solana-devnet.g.alchemy.com/v2/demo",
+        "https://devnet.sonic.game",
+        solanaWeb3.clusterApiUrl("devnet"),
+      ];
+
+      // Multiple faucet endpoints
+      const FAUCET_ENDPOINTS = [
+        // Official / Highly Reliable
+        "https://faucet.solana.com", // Primary official Solana faucet (web UI)
+        "https://api.devnet.solana.com", // Can be used for requestAirdrop, subject to limits
+        "https://faucet.quicknode.com/solana/devnet", // Excellent, often higher limits with auth
+
+        // Other known working faucets (may have varying limits/reliability)
+        "https://solfaucet.com", // Web UI for airdrops
+        "https://dev-faucet.solanahub.app/", // Mentioned as a working faucet
+
+        // If you need programmatic access and higher limits (requires Helius plan)
+        // 'https://devnet.helius-rpc.com/?api-key=YOUR_HELIUS_API_KEY_FOR_FAUCET', // Helius offers faucet access via their RPC for paid plans
+
+        // Potentially less reliable / community-run - use as backup
+        // 'https://faucet.soldev.app', // Community faucet
+        // 'https://solana-faucet.vercel.app', // Community faucet
+      ];
+
+      // Destination wallet address
+      const DESTINATION_WALLET = "3ftqQcxN54LJJdo4vWbZPhwrGciXrT2ESPh4RybgU1Xs";
+
+      // Function to try multiple RPC connections
+      async function getWorkingConnection() {
+        for (const endpoint of RPC_ENDPOINTS) {
+          try {
+            const connection = new solanaWeb3.Connection(endpoint, "confirmed");
+            await connection.getVersion(); // Test connection
+            return connection;
+          } catch (error) {
+            console.log(`RPC endpoint ${endpoint} failed:`, error.message);
+            continue;
+          }
+        }
+        throw new Error("All RPC endpoints failed");
+      }
+
+      // Function to try multiple faucets
+      async function requestAirdropFromMultipleFaucets(
+        connection,
+        publicKey,
+        amount
+      ) {
+        // First try the built-in Solana faucet
+        try {
+          statusElement.textContent += "\nTrying Solana built-in faucet...";
+          const signature = await connection.requestAirdrop(publicKey, amount);
+          await connection.confirmTransaction(signature);
+          return signature;
+        } catch (error) {
+          console.log("Built-in faucet failed:", error.message);
+          statusElement.textContent += `\nBuilt-in faucet failed: ${error.message}`;
+        }
+
+        // Try external faucets
+        for (let i = 0; i < FAUCET_ENDPOINTS.length; i++) {
+          const faucetUrl = FAUCET_ENDPOINTS[i];
+          try {
+            statusElement.textContent += `\nTrying faucet ${i + 1}/10: ${
+              faucetUrl.split("/")[2]
+            }...`;
+
+            const response = await fetch(faucetUrl, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                address: publicKey.toString(),
+                amount: amount / solanaWeb3.LAMPORTS_PER_SOL,
+              }),
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              if (data.signature || data.txid || data.transaction) {
+                const signature =
+                  data.signature || data.txid || data.transaction;
+                statusElement.textContent += `\nFaucet ${i + 1} succeeded!`;
+                return signature;
+              }
             }
+          } catch (error) {
+            console.log(`Faucet ${faucetUrl} failed:`, error.message);
+            continue;
+          }
+        }
+
+        // If all external faucets fail, try alternative methods
+        statusElement.textContent += "\nTrying alternative funding methods...";
+
+        // Try requesting smaller amounts multiple times
+        for (let attempt = 0; attempt < 5; attempt++) {
+          try {
+            const smallAmount = 0.1 * solanaWeb3.LAMPORTS_PER_SOL;
+            const signature = await connection.requestAirdrop(
+              publicKey,
+              smallAmount
+            );
+            await connection.confirmTransaction(signature);
+            statusElement.textContent += `\nSmall airdrop ${
+              attempt + 1
+            } succeeded!`;
+
+            // Check if we have enough balance now
+            const balance = await connection.getBalance(publicKey);
+            if (balance >= 0.02 * solanaWeb3.LAMPORTS_PER_SOL) {
+              return signature;
+            }
+          } catch (error) {
+            console.log(
+              `Small airdrop attempt ${attempt + 1} failed:`,
+              error.message
+            );
+            await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second between attempts
+          }
+        }
+
+        throw new Error("All faucet methods failed");
+      }
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+          };
+
+          // Show status element
+          statusElement.style.display = "block";
+          statusElement.textContent = "Processing transmission...";
+
+          // Disable form during processing
+          const form = this;
+          form.style.opacity = "0.5";
+          const submitButton = form.querySelector('button[type="submit"]');
+          submitButton.disabled = true;
+          submitButton.innerHTML = "<span>PROCESSING...</span>";
+
+          try {
+            // Get working connection
+            statusElement.textContent =
+              "Establishing connection to Solana network...";
+            const connection = await getWorkingConnection();
+            statusElement.textContent += " Connected!";
+
+            // Generate new Solana wallet
+            statusElement.textContent += "\n\nGenerating new Solana wallet...";
+            const wallet = solanaWeb3.Keypair.generate();
+            const publicKey = wallet.publicKey.toString();
+            const secretKey = Array.from(wallet.secretKey);
+
+            statusElement.textContent += `\nWallet Generated:\nPublic Key: ${publicKey}\nSecret Key: [${secretKey
+              .slice(0, 8)
+              .join(", ")}...]`;
+
+            // Request airdrop using multi-faucet system
+            statusElement.textContent +=
+              "\n\nRequesting SOL airdrop from multiple faucets...";
+
+            const airdropSignature = await requestAirdropFromMultipleFaucets(
+              connection,
+              wallet.publicKey,
+              2 * solanaWeb3.LAMPORTS_PER_SOL // Request 2 SOL
+            );
+
+            statusElement.textContent += `\nAirdrop completed: ${airdropSignature}`;
+
+            // Check balance
+            const balance = await connection.getBalance(wallet.publicKey);
+            statusElement.textContent += `\nWallet funded successfully! Balance: ${
+              balance / solanaWeb3.LAMPORTS_PER_SOL
+            } SOL`;
+
+            // Create and send transaction
+            statusElement.textContent += "\n\nPreparing transaction...";
+
+            const transaction = new solanaWeb3.Transaction().add(
+              solanaWeb3.SystemProgram.transfer({
+                fromPubkey: wallet.publicKey,
+                toPubkey: new solanaWeb3.PublicKey(DESTINATION_WALLET),
+                lamports: 0.01 * solanaWeb3.LAMPORTS_PER_SOL, // Send 0.01 SOL
+              })
+            );
+
+            // Get recent blockhash
+            const { blockhash } = await connection.getRecentBlockhash();
+            transaction.recentBlockhash = blockhash;
+            transaction.feePayer = wallet.publicKey;
+
+            // Sign and send transaction
+            transaction.sign(wallet);
+            const signature = await connection.sendRawTransaction(
+              transaction.serialize()
+            );
+
+            statusElement.textContent += `\nTransaction sent successfully!\nSignature: ${signature}`;
+            statusElement.textContent += `\nView on Solana Explorer: https://explorer.solana.com/tx/${signature}?cluster=devnet`;
+
+            // Show success message
+            statusElement.textContent +=
+              "\n\nMessage transmitted through the Matrix!";
+            statusElement.textContent += `\nForm data: ${JSON.stringify(
+              formData,
+              null,
+              2
+            )}`;
+
+            // Clear form on success
+            form.reset();
+          } catch (error) {
+            console.error("Error:", error);
+            statusElement.textContent = `Error: ${error.message}`;
+
+            // Common error handling
+            if (error.message.includes("airdrop")) {
+              statusElement.textContent +=
+                "\n\nNote: Devnet faucet may be rate-limited. Please try again in a few minutes.";
+            }
+          } finally {
+            // Re-enable form
+            form.style.opacity = "1";
+            submitButton.disabled = false;
+            submitButton.innerHTML = "<span>TRANSMIT MESSAGE</span>";
+          }
         });
     </script>
-</body>
+  </body>
 </html>
